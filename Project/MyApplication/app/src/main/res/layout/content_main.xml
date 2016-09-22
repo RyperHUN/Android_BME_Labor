@@ -57,6 +57,31 @@
 
     </LinearLayout>
 
+    <!--Ez lesz az osszegzo helye-->
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_gravity="end"
+        android:id="@+id/sum_layout_id"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <TextView
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sum_money"/>
+
+        <TextView
+            android:paddingLeft="15dp"
+            android:textSize="25dp"
+            android:id="@+id/sum_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="3000 Ft"/>
+
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
