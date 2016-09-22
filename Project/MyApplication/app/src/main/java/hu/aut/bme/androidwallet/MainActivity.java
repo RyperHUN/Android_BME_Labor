@@ -2,6 +2,7 @@ package hu.aut.bme.androidwallet;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -47,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (nameEditText.getText().toString().isEmpty() || amountEditText.getText().toString().isEmpty())
                 {
-                    Toast.makeText(MainActivity.this, R.string.error_check_no_input, Toast.LENGTH_LONG).show();
-                            //Azert main activity mert lambda fuggvenybe vagyunk!
+                    Snackbar snackbar = Snackbar.make (findViewById(R.id.id_main_layout), R.string.error_check_no_input, 3000);
+                    snackbar.show ();
                     //Ez egy hibakezeles!
                     return;
                 }
