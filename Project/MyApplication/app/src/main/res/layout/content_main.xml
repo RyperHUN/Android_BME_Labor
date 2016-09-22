@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,62 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="hu.aut.bme.androidwallet.MainActivity"
     tools:showIn="@layout/activity_main">
-</RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"> <!-- Akkora lesz a magassaga amibe pont belefernek az elemek -->
+        <EditText
+            android:id="@+id/salary_name"
+            android:layout_weight="0.6"
+            android:layout_width="0dp"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:layout_height="wrap_content" /> <!-- A layout weight azt adja meg hogy az adott hosszbol mennyit kapjonmeg -->
+        <!-- Action next == Azt jelenti hogyha beirtad atugrik a kovetkezore -->
+        <EditText
+            android:id="@+id/salary_amount"
+            android:inputType="number"
+            android:singleLine="true"
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" /> <!-- A layout weight azt adja meg hogy az adott hosszbol mennyit kapjonmeg -->
+         <!-- @ = Eroforras, + = Uj id letrehozasa -->
+        <!-- maxLines jobb mint a Single LIne de ez igazabol azt csinalja hogy nem engedi hogy 1 sornal tobb legyen -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"> <!-- Akkora lesz a magassaga amibe pont belefernek az elemek -->
+    <!-- Layout gravity : Center akkor a buttn legyen kozepen, a layout gravity meg a szlonek mondja meg -->
+        
+        <ToggleButton
+            android:id="@+id/expense_or_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="@string/toggle_button_on_label"
+            android:textOff="@string/toggle_button_off_label"/>
+
+        <Button
+            android:id="@+id/save_buton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_salary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"> <!-- Akkora lesz a magassaga amibe pont belefernek az elemek -->
+
+        <!-- Most nem lesz scrollozhato de egyszeruseg kedveert ezt hasznaljuk-->
+
+
+    </LinearLayout>
+</LinearLayout>

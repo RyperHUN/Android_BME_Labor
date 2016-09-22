@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/salary_direction_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!-- Araboknal a marginStart az a szoveg kezdetehez relativ -->
+
+         <TextView
+             android:id="@+id/row_salary_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Kaja"/>
+
+        <!-- Tools csak design nezetre van, a vegsobe nem fordul bele -->
+
+        <TextView
+            android:id="@+id/row_salary_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="3000 ft"/>
+
+    </LinearLayout>
+
+</LinearLayout>
