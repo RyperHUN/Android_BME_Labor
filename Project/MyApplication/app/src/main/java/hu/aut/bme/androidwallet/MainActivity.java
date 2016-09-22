@@ -102,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_all) {
             listOfRows.removeAllViews();
+
+            //Hide sum
+            LinearLayout sumLayout = (LinearLayout) findViewById(R.id.sum_layout_id);
+            sumLayout.setVisibility(LinearLayout.GONE);
+            TextView sumValueView = (TextView)  findViewById(R.id.sum_value);
+            sumValueView.setText ("0");
             return true;
         }
 
