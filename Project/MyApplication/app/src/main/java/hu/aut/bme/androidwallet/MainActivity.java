@@ -60,14 +60,25 @@ public class MainActivity extends AppCompatActivity {
                 TextView rowItemSalaryName   = (TextView)  rowItem.findViewById(R.id.row_salary_name);
                 TextView rowItemSalaryAmount = (TextView)  rowItem.findViewById(R.id.row_salary_amount);
 
+                //Sum
+                LinearLayout sumLayout = (LinearLayout) findViewById(R.id.sum_layout_id);
+                sumLayout.setVisibility(LinearLayout.VISIBLE);
+                int expenseValue = Integer.parseInt (amountEditText.getText().toString());
+                TextView sumValueView = (TextView)  findViewById(R.id.sum_value);
+                int sumExpenseValue = Integer.parseInt(sumValueView.getText().toString());
+
                 if (typeChooserButton.isChecked()) {
                     icon.setImageResource(R.drawable.income);
+                    sumValueView.setText ("" + (expenseValue + sumExpenseValue));
                 } else {
                     icon.setImageResource(R.drawable.expense);
+                    sumValueView.setText ("" + (sumExpenseValue - expenseValue));
                 }
 
                 rowItemSalaryName.setText(nameEditText.getText().toString());
                 rowItemSalaryAmount.setText(amountEditText.getText().toString());
+
+
 
                 listOfRows.addView(rowItem);
             }
