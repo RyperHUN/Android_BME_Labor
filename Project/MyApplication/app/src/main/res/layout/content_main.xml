@@ -57,14 +57,19 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/list_of_rows"
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"> <!-- Akkora lesz a magassaga amibe pont belefernek az elemek -->
+        android:layout_height="wrap_content">
 
-        <!-- Most nem lesz scrollozhato de egyszeruseg kedveert ezt hasznaljuk-->
+        <LinearLayout
+            android:id="@+id/list_of_rows"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"> <!-- Akkora lesz a magassaga amibe pont belefernek az elemek -->
 
+            <!-- Most nem lesz scrollozhato de egyszeruseg kedveert ezt hasznaljuk-->
+        </LinearLayout>
+    </ScrollView>
+    <!-- ScrollView nak csak 1 gyereke lehet-->
 
-    </LinearLayout>
 </LinearLayout>
