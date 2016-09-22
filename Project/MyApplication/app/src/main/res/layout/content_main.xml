@@ -77,7 +77,7 @@
             android:id="@+id/sum_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="3000 Ft"/>
+            android:text="0"/>
 
 
     </LinearLayout>
