@@ -50,7 +50,7 @@
             android:textOff="@string/toggle_button_off_label"/>
 
         <Button
-            android:id="@+id/save_buton"
+            android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save_salary"/>
@@ -58,6 +58,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/list_of_rows"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"> <!-- Akkora lesz a magassaga amibe pont belefernek az elemek -->
