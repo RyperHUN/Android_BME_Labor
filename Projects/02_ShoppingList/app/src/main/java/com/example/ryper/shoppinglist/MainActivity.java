@@ -1,15 +1,29 @@
 package com.example.ryper.shoppinglist;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NewShoppingItemDialogFragment.INewShoppingItemDialogListener {
+
+    private RecyclerView recyclerView;
+    private ShoppingAdapter adapter;
+
+    @Override
+    public void onShoppingItemCreated(ShoppingItem newItem) {
+        adapter.addItem(newItem);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new NewShoppingItemDialogFragment().show(getSupportFragmentManager(), NewShoppingItemDialogFragment.TAG);
+            }
+        });
+
+        initRecyclerView();
     }
 
     @Override
@@ -48,5 +71,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.MainRecyclerView);
+        adapter = new ShoppingAdapter();
+        loadItemsInBackground();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void loadItemsInBackground() {
+        new AsyncTask<Void, Void, List<ShoppingItem>>() {
+            @Override
+            protected List<ShoppingItem> doInBackground(Void... voids) {
+                return ShoppingItem.listAll(ShoppingItem.class);
+            }
+
+            @Override
+            protected void onPostExecute(List<ShoppingItem> shoppingItems) {
+                super.onPostExecute(shoppingItems);
+                adapter.update(shoppingItems);
+            }
+        }.execute();
     }
 }
