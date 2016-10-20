@@ -1,5 +1,6 @@
 package hu.bme.aut.a03_weatherinfo.UI.Main;
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,8 +27,10 @@ public class DetailsActivity extends AppCompatActivity implements WeatherDataHol
     @Override
     protected void onResume() {
         super.onResume();
+        ViewPager mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
+        DetailsPagerAdapter detailsPagerAdapter = new DetailsPagerAdapter(getSupportFragmentManager(), this);
+        mainViewPager.setAdapter(detailsPagerAdapter);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

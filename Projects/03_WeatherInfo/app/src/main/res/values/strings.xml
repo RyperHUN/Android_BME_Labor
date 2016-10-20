@@ -14,5 +14,8 @@
     <string name="humidity">Humidity</string>
     <string name="main">Main</string>
     <string name="details">Details</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
