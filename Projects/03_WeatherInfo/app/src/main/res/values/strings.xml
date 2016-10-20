@@ -6,7 +6,7 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_details">DetailsActivity</string>
-    <string name="weather">Weather</string>
+    <string name="weather">Weather in %s </string>
     <string name="temperature">Temperature</string>
     <string name="min_temperature">Min temperature</string>
     <string name="max_temperature">Max temperature</string>

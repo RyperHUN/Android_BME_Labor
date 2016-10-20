@@ -1,5 +1,6 @@
 package hu.bme.aut.a03_weatherinfo.UI.Main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -41,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new CityAdapter(new OnCitySelectedListener() {
             @Override
             public void onCitySelected(String city) {
-                // Todo: új DetailsActivity indítása és a
-                // kiválasztott város hozzáadása
+                Intent showDetailsIntent = new Intent();
+                showDetailsIntent.setClass(MainActivity.this, DetailsActivity.class);
+                showDetailsIntent.putExtra(DetailsActivity.EXTRA_CITY_NAME, city);
+                startActivity(showDetailsIntent);
             }
         });
         adapter.addCity("Budapest");
