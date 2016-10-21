@@ -76,6 +76,12 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
                     }
                 }
             });
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    removeCity (position); //TODO
+                }
+            });
         }
     }
 }
