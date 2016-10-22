@@ -16,6 +16,7 @@ public class HistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TodoHistoryAdapter adapter;
 
+    //TODO Trash bin icon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

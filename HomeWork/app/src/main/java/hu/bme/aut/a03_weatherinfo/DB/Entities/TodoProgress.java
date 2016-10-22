@@ -13,7 +13,7 @@ import hu.bme.aut.a03_weatherinfo.Model.Categories;
  */
 public class TodoProgress extends SugarRecord{
     String desc;
-    long   start; //TODO Start time
+    long   start;
     String category;
 
     public TodoProgress() {}

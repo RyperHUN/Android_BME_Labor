@@ -10,6 +10,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager;
@@ -32,10 +35,15 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
         setContentView(R.layout.activity_main);
         checkPermissions ();
         initFab();
-
+        setUpToolbar ();
 //        DBFillwithTestData ();
 
         initRecyclerView();
+    }
+
+    private void setUpToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     private void DBFillwithTestData() {
@@ -150,5 +158,20 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
     public void onTodoAdded(TodoProgress todoProg) {
         adapter.addListElement(todoProg);
         todoProg.save ();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
