@@ -20,8 +20,8 @@ import hu.bme.aut.a03_weatherinfo.R;
 /**
  * Created by Ryper on 2016. 10. 20..
  */
-public class CityAdapter extends RecyclerView.Adapter<CityAdapter.TodoViewHolder>
-implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
+public class CityAdapter extends RecyclerView.Adapter<TodoViewHolder>
+implements DraggableItemAdapter<TodoViewHolder>, OnItemChangedNotifier {
 
     private final List<ExtendedProgress> todos;
 //    private OnCitySelectedListener listener;
@@ -43,7 +43,7 @@ implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
     @Override
     public TodoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_city, parent, false);
-        TodoViewHolder viewHolder = new TodoViewHolder(view);
+        TodoViewHolder viewHolder = new TodoViewHolder(view, this);
         return viewHolder;
     }
 
@@ -65,14 +65,6 @@ implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
         ExtendedProgress newItem = new ExtendedProgress (id++, progress);
         todos.add(newItem);
         notifyItemInserted(todos.size() - 1); //Ertesitjuk az adaptert a cityrol
-    }
-
-    public void removeCity(int position) {
-        todos.remove(position);
-        notifyItemRemoved(position);
-        if (position < todos.size()) {
-            notifyItemRangeChanged(position, todos.size() - position);
-        }
     }
 
     @Override
@@ -103,29 +95,23 @@ implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
             addListElement(todoProg);
     }
 
-    public class TodoViewHolder extends AbstractDraggableItemViewHolder {
-        int position;
-        TextView nameTextView;
-        TextView dateTextView;
-        Button completeButton;
-        Button removeButton;
+    @Override
+    public void ItemRemoved(int pos) {
+        removeItem (pos);
+    }
 
-        public TodoViewHolder(View itemView) {
-            super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.TodoListItemDesc);
-            completeButton = (Button) itemView.findViewById(R.id.TodoListItemCompleteBtn);
-            removeButton = (Button) itemView.findViewById(R.id.TodoListItemRemovBtn);
-            dateTextView = (TextView) itemView.findViewById(R.id.TodoListItemStartDate);
+    @Override
+    public void ItemCompleted(int pos) {
+        //completeItem (pos);
+        //TODO
+    }
 
-            //TODO real clicks
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    if (listener != null) {
-//                        listener.onCitySelected(todos.get(position));
-//                    }
-//                }
-//            });
+    public void removeItem(int position) {
+        ExtendedProgress removed = todos.remove(position);
+        removed.progress.delete (); // Delete from DB
+        notifyItemRemoved(position);
+        if (position < todos.size()) {
+            notifyItemRangeChanged(position, todos.size() - position);
         }
     }
 
