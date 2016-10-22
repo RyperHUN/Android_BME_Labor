@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_settings) {
+        if (item.getItemId() == R.id.action_history) {
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             startActivity (intent);
             return true;

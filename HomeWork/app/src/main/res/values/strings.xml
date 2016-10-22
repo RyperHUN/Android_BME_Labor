@@ -18,5 +18,6 @@
     <string name="DialogTodoCategory">Category:</string>
     <string name="TodoListItemRemove">Remove</string>
     <string name="title_activity_history">HistoryActivity</string>
+    <string name="MenuViewHistory">View History</string>
 </resources>
 
