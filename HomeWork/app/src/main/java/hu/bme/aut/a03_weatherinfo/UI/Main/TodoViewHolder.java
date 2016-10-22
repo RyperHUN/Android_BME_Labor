@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemViewHolder;
 
 import hu.bme.aut.a03_weatherinfo.R;
+import hu.bme.aut.a03_weatherinfo.UI.Common.DialogFragment;
+import hu.bme.aut.a03_weatherinfo.UI.Common.Dialogg;
 
 /**
  * Created by Ryper on 2016. 10. 22..
@@ -40,6 +42,7 @@ public class TodoViewHolder extends AbstractDraggableItemViewHolder {
             @Override
             public void onClick(View v) {
                 myNotifier.ItemCompleted(position);
+                //TODO Popup dialog biztos le akarja-e torolni
             }
         });
     }

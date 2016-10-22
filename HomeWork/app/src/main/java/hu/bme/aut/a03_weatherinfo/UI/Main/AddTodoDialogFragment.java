@@ -47,7 +47,7 @@ public class AddTodoDialogFragment extends AppCompatDialogFragment{
                 if (isValidInput ())
                     listener.onTodoAdded(getParsedInputTODO ());
                 else
-                    ;//TODO Snackbar message
+                    ;//TODO Snackbar message if empty -> Does not work
             }
         }).setNegativeButton(R.string.cancel, null).create();
     }

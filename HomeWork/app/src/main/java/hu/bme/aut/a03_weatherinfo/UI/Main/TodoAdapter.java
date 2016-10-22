@@ -107,7 +107,6 @@ implements DraggableItemAdapter<TodoViewHolder>, OnListItemChangedNotifier {
     @Override
     public void ItemCompleted(int pos) {
         completeItem (pos);
-        //TODO test if really writes to todoHistory
     }
 
     private void completeItem (int position) {

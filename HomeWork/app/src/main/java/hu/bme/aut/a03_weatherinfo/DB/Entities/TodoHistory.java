@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class TodoHistory extends SugarRecord {
     String desc;
-    long start; //TODO
+    long start;
     long end;
     String category;
 

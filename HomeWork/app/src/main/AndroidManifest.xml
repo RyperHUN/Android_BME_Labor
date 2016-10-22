@@ -3,7 +3,6 @@
     package="hu.bme.aut.a03_weatherinfo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- TODO del?? -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 

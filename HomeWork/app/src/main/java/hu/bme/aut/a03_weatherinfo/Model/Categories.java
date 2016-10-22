@@ -1,6 +1,10 @@
 package hu.bme.aut.a03_weatherinfo.Model;
 
+import android.content.res.Resources;
+
 import java.util.HashMap;
+
+import hu.bme.aut.a03_weatherinfo.R;
 
 /**
  * Created by Ryper on 2016. 10. 22..
@@ -14,7 +18,7 @@ public class Categories {
     static final public String CKey = "C";
     static final public String DKey = "D";
     //Values
-    static private String AValue = "MustToday"; //TODO extract string resource
+    static private String AValue = "MustToday"; //TODO extract string resource -> Don't work
     static private String BValue = "MaybeToday";
     static private String CValue = "Later";
     static private String DValue = "DontForget";
