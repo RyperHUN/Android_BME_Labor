@@ -10,14 +10,14 @@
     android:paddingTop="8dp">
 
     <TextView
-        android:id="@+id/CityItemNameTextView"
+        android:id="@+id/TodoListItemDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         tools:text="Budapest" />
 
     <Button
-        android:id="@+id/CityItemRemoveButton"
+        android:id="@+id/TodoListItemCompleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Complete" />

@@ -20,75 +20,74 @@ import hu.bme.aut.a03_weatherinfo.R;
 /**
  * Created by Ryper on 2016. 10. 20..
  */
-public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder>
-implements DraggableItemAdapter<CityAdapter.CityViewHolder>{
+public class CityAdapter extends RecyclerView.Adapter<CityAdapter.TodoViewHolder>
+implements DraggableItemAdapter<CityAdapter.TodoViewHolder>{
 
-    private final List<MyItem> cities;
+    private final List<ExtendedProgress> todos;
 //    private OnCitySelectedListener listener;
 //public CityAdapter(OnCitySelectedListener) {
 
     public CityAdapter() {
         //this.listener = listener;
-        cities = new ArrayList<>();
+        todos = new ArrayList<>();
         setHasStableIds(true); // this is required for D&D feature.
     }
 
     @Override
     public long getItemId(int position) {
-        return cities.get(position).id; // need to return stable (= not change even after reordered) value
+        return todos.get(position).id; // need to return stable (= not change even after reordered) value
     }
 
     //Ez fog letrehozni egy sort,
     //Fog egy sort es berakja a viewHolderbe es ezt adja vissza
-    //
     @Override
-    public CityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TodoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_city, parent, false);
-        CityViewHolder viewHolder = new CityViewHolder(view);
+        TodoViewHolder viewHolder = new TodoViewHolder(view);
         return viewHolder;
     }
 
     // Parameterkent megkapja a viewHoldert, es mi megadjuk neki a poziciot amivel beallutja??
     @Override
-    public void onBindViewHolder(CityViewHolder holder, int position) {
+    public void onBindViewHolder(TodoViewHolder holder, int position) {
         holder.position = position;
-        holder.nameTextView.setText(cities.get(position).text);
+        holder.nameTextView.setText(todos.get(position).progress.getDesc());
     }
 
     @Override
     public int getItemCount() {
-        return cities.size();
+        return todos.size();
     }
 
     static long id = 0;
-    public void addCity(String newCity) {
-        MyItem newItem = new MyItem (id++, newCity);
-        cities.add(newItem);
-        notifyItemInserted(cities.size() - 1); //Ertesitjuk az adaptert a cityrol
+    public void addListElement(TodoProgress progress) {
+        ExtendedProgress newItem = new ExtendedProgress (id++, progress);
+        todos.add(newItem);
+        notifyItemInserted(todos.size() - 1); //Ertesitjuk az adaptert a cityrol
     }
 
     public void removeCity(int position) {
-        cities.remove(position);
+        todos.remove(position);
         notifyItemRemoved(position);
-        if (position < cities.size()) {
-            notifyItemRangeChanged(position, cities.size() - position);
+        if (position < todos.size()) {
+            notifyItemRangeChanged(position, todos.size() - position);
         }
     }
 
     @Override
-    public boolean onCheckCanStartDrag(CityViewHolder holder, int position, int x, int y) {
+    public boolean onCheckCanStartDrag(TodoViewHolder holder, int position, int x, int y) {
         return true;
     }
 
     @Override
-    public ItemDraggableRange onGetItemDraggableRange(CityViewHolder holder, int position) {
+    public ItemDraggableRange onGetItemDraggableRange(TodoViewHolder holder, int position) {
         return null;
     }
 
     @Override
     public void onMoveItem(int fromPosition, int toPosition) {
-        MyItem movedItem = cities.remove(fromPosition);
-        cities.add(toPosition, movedItem);
+        ExtendedProgress movedItem = todos.remove(fromPosition);
+        todos.add(toPosition, movedItem);
         notifyItemMoved(fromPosition, toPosition);
     }
 
@@ -100,36 +99,36 @@ implements DraggableItemAdapter<CityAdapter.CityViewHolder>{
     public void fillFromDb() {
         List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class);
         for (TodoProgress todoProg : loaded)
-            addCity(todoProg.getDesc());
+            addListElement(todoProg);
     }
 
-    public class CityViewHolder extends AbstractDraggableItemViewHolder {
+    public class TodoViewHolder extends AbstractDraggableItemViewHolder {
         int position;
         TextView nameTextView;
-        Button removeButton;
+        Button completeButton;
 
-        public CityViewHolder(View itemView) {
+        public TodoViewHolder(View itemView) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.CityItemNameTextView);
-            removeButton = (Button) itemView.findViewById(R.id.CityItemRemoveButton);
+            nameTextView = (TextView) itemView.findViewById(R.id.TodoListItemDesc);
+            completeButton = (Button) itemView.findViewById(R.id.TodoListItemCompleteBtn);
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
 //                    if (listener != null) {
-//                        listener.onCitySelected(cities.get(position));
+//                        listener.onCitySelected(todos.get(position));
 //                    }
 //                }
 //            });
         }
     }
 
-    static class MyItem {
+    static class ExtendedProgress {
         public final long id;
-        public final String text;
+        public final TodoProgress progress;
 
-        public MyItem(long id, String text) {
+        public ExtendedProgress(long id, TodoProgress progress) {
             this.id = id;
-            this.text = text;
+            this.progress = progress;
         }
     }
 
