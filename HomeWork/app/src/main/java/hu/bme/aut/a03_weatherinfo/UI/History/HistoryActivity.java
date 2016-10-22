@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.util.List;
+
+import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoHistory;
 import hu.bme.aut.a03_weatherinfo.R;
 
 public class HistoryActivity extends AppCompatActivity {
@@ -16,24 +19,28 @@ public class HistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TodoHistoryAdapter adapter;
 
-    //TODO Trash bin icon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
+        initFloatingButton ();
+        initRecyclerView ();
+    }
+
+    private void initFloatingButton() {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                List<TodoHistory> items = TodoHistory.listAll(TodoHistory.class);
+                for (TodoHistory item : items) {
+                    item.delete();
+                }
+                adapter.histories.clear ();
+                adapter.notifyDataSetChanged();
             }
         });
-
-        initRecyclerView ();
     }
 
     private void initRecyclerView() {
