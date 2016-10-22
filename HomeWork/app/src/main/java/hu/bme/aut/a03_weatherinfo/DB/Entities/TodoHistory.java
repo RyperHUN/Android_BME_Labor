@@ -9,8 +9,8 @@ import java.sql.Date;
  */
 public class TodoHistory extends SugarRecord {
     String desc;
-    Date start; //TODO
-    Date end;
+    long start; //TODO
+    long end;
     String category;
 
     public TodoHistory() {}
@@ -20,7 +20,7 @@ public class TodoHistory extends SugarRecord {
         this.category = progress.category;
         this.start    = progress.start;
 
-        this.end      = new Date (System.currentTimeMillis());
+        this.end      = System.currentTimeMillis();
 
     }
 }

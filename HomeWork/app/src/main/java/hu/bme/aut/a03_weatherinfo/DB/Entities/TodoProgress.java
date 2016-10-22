@@ -1,13 +1,13 @@
 package hu.bme.aut.a03_weatherinfo.DB.Entities;
 
-import java.sql.Date;
+import com.orm.SugarRecord;
 
 /**
  * Created by Ryper on 2016. 10. 22..
  */
-public class TodoProgress {
+public class TodoProgress extends SugarRecord{
     String desc;
-    Date   start; //TODO Start time
+    long   start; //TODO Start time
     String category;
 
     public TodoProgress() {}
@@ -15,6 +15,6 @@ public class TodoProgress {
     public TodoProgress(String desc, String category) {
         this.desc     = desc;
         this.category = category;
-        this.start    = new Date (System.currentTimeMillis());
+        this.start    = System.currentTimeMillis();
     }
 }

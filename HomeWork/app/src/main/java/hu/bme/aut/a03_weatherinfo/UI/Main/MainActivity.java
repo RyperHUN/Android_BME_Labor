@@ -17,6 +17,9 @@ import android.view.MenuItem;
 
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager;
 
+import java.util.List;
+
+import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
         checkPermissions ();
         initFab();
         initRecyclerView();
+
+        DBTest ();
+    }
+
+    private void DBTest() {
+        TodoProgress.deleteAll (TodoProgress.class);
+        TodoProgress todoProgress = new TodoProgress ("Elmenni tejert","Fontos");
+        todoProgress.save ();
+
+        List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class);
     }
 
     private void initFab() {
