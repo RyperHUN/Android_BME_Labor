@@ -71,9 +71,7 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // TODO: új város dialógus megjelení™ése//
-                //new AddTodoDialogFragment().show( getSupportFragmentManager(), AddTodoDialogFragment.TAG);
-                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivity (intent);
+                new AddTodoDialogFragment().show( getSupportFragmentManager(), AddTodoDialogFragment.TAG);
             }
         });
     }
@@ -170,6 +168,8 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity (intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
