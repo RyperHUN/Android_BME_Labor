@@ -21,7 +21,7 @@ import hu.bme.aut.a03_weatherinfo.R;
  * Created by Ryper on 2016. 10. 20..
  */
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.TodoViewHolder>
-implements DraggableItemAdapter<CityAdapter.TodoViewHolder>{
+implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
 
     private final List<ExtendedProgress> todos;
 //    private OnCitySelectedListener listener;

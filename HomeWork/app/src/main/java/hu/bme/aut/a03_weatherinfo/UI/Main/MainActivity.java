@@ -23,7 +23,7 @@ import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.Model.Categories;
 import hu.bme.aut.a03_weatherinfo.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AddTodoDialogListener{
 
     private RecyclerView recyclerView;
     private CityAdapter adapter;
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // TODO: új város dialógus megjelení™ése//
+                new AddTodoDialogFragment().show( getSupportFragmentManager(), AddTodoDialogFragment.TAG);
             }
         });
     }
@@ -150,5 +151,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void onTodoAdded(TodoProgress todoProg) {
+        adapter.addListElement(todoProg);
     }
 }
