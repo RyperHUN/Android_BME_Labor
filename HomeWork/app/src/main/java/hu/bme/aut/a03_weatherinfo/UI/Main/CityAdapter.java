@@ -14,6 +14,7 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemView
 import java.util.ArrayList;
 import java.util.List;
 
+import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoHistory;
 import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.R;
 
@@ -100,13 +101,7 @@ implements DraggableItemAdapter<TodoViewHolder>, OnItemChangedNotifier {
         removeItem (pos);
     }
 
-    @Override
-    public void ItemCompleted(int pos) {
-        //completeItem (pos);
-        //TODO
-    }
-
-    public void removeItem(int position) {
+    private void removeItem(int position) {
         ExtendedProgress removed = todos.remove(position);
         removed.progress.delete (); // Delete from DB
         notifyItemRemoved(position);
@@ -114,6 +109,22 @@ implements DraggableItemAdapter<TodoViewHolder>, OnItemChangedNotifier {
             notifyItemRangeChanged(position, todos.size() - position);
         }
     }
+
+    @Override
+    public void ItemCompleted(int pos) {
+        completeItem (pos);
+        //TODO test if really writes to todoHistory
+    }
+
+    private void completeItem (int position) {
+        ExtendedProgress soonRemove  = todos.get(position);
+        TodoHistory todoHistory = new TodoHistory (soonRemove.progress);
+        todoHistory.save (); // Write to DB
+
+        removeItem (position);
+    }
+
+
 
     static class ExtendedProgress {
         public final long id;
