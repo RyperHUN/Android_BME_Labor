@@ -4,6 +4,7 @@ import com.orm.SugarRecord;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -43,5 +44,18 @@ public class TodoHistory extends SugarRecord {
 
     public String getEndDate () {
         return " - " + formattedDate (end);
+    }
+
+    static public class EndDateComparator implements Comparator<TodoHistory> {
+
+        @Override
+        public int compare(TodoHistory o1, TodoHistory o2) {
+            return o1.end < o2.end ? 1 : o1.end == o2.end ? 0 : -1;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return false;
+        }
     }
 }

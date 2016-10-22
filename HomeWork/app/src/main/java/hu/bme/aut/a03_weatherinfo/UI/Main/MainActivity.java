@@ -19,6 +19,7 @@ import java.util.List;
 import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.Model.Categories;
 import hu.bme.aut.a03_weatherinfo.R;
+import hu.bme.aut.a03_weatherinfo.UI.History.HistoryActivity;
 
 public class MainActivity extends AppCompatActivity implements AddTodoDialogListener{
 

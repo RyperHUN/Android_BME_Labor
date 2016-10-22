@@ -1,12 +1,12 @@
-package hu.bme.aut.a03_weatherinfo.UI.Main;
+package hu.bme.aut.a03_weatherinfo.UI.History;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoHistory;
@@ -21,6 +21,7 @@ public class TodoHistoryAdapter extends RecyclerView.Adapter<TodoHistoryViewHold
     public TodoHistoryAdapter ()
     {
         histories = TodoHistory.listAll (TodoHistory.class);
+        Collections.sort(histories, new TodoHistory.EndDateComparator());
     }
 
     @Override

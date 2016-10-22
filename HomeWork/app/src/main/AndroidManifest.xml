@@ -39,7 +39,7 @@
             android:value="hu.bme.aut.a03_weatherinfo.DB" />
 
         <activity
-            android:name=".UI.Main.HistoryActivity"
+            android:name=".UI.History.HistoryActivity"
             android:label="@string/title_activity_history"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

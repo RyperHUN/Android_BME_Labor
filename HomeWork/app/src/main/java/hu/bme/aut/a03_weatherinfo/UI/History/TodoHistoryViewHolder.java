@@ -1,4 +1,4 @@
-package hu.bme.aut.a03_weatherinfo.UI.Main;
+package hu.bme.aut.a03_weatherinfo.UI.History;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import hu.bme.aut.a03_weatherinfo.R;
+import hu.bme.aut.a03_weatherinfo.UI.Main.OnListItemChangedNotifier;
 
 /**
  * Created by Ryper on 2016. 10. 22..
