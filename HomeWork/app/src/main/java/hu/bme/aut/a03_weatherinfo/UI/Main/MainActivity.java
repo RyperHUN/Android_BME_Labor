@@ -1,6 +1,7 @@
 package hu.bme.aut.a03_weatherinfo.UI.Main;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -61,7 +62,9 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // TODO: új város dialógus megjelení™ése//
-                new AddTodoDialogFragment().show( getSupportFragmentManager(), AddTodoDialogFragment.TAG);
+                //new AddTodoDialogFragment().show( getSupportFragmentManager(), AddTodoDialogFragment.TAG);
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity (intent);
             }
         });
     }

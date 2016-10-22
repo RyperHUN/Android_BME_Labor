@@ -38,6 +38,10 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="hu.bme.aut.a03_weatherinfo.DB" />
 
+        <activity
+            android:name=".UI.Main.HistoryActivity"
+            android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
