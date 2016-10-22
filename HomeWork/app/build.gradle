@@ -30,4 +30,5 @@ dependencies {
     compile ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.9.3@aar'){
         transitive=true
     }
+    compile 'com.github.satyan:sugar:1.4'
 }
