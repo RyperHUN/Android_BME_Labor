@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager;
+
 import hu.bme.aut.a03_weatherinfo.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,18 +39,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.MainRecyclerView);
+
+        // Setup D&D feature and RecyclerView
+        RecyclerViewDragDropManager dragMgr = new RecyclerViewDragDropManager();
+        dragMgr.setInitiateOnMove(false);
+        dragMgr.setInitiateOnLongPress(true);
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CityAdapter(new OnCitySelectedListener() {
-            @Override
-            public void onCitySelected(String city) {
-                // Todo: új DetailsActivity indítása és a
-                // kiválasztott város hozzáadása
-            }
-        });
+        adapter = new CityAdapter ();
+// new OnCitySelectedListener() {
+//            @Override
+//            public void onCitySelected(String city) {
+//                // Todo: új DetailsActivity indítása és a
+//                // kiválasztott város hozzáadása
+//            }
+//        } );
+
         adapter.addCity("Budapest");
         adapter.addCity("Debrecen");
         adapter.addCity("Sopron");
         adapter.addCity("Szeged");
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(dragMgr.createWrappedAdapter(adapter));
+
+        dragMgr.attachRecyclerView(recyclerView);
     }
 }
