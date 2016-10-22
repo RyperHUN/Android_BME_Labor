@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
         checkPermissions ();
         initFab();
 
-        DBFillwithTestData ();
+//        DBFillwithTestData ();
 
         initRecyclerView();
     }
@@ -156,5 +156,6 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
     @Override
     public void onTodoAdded(TodoProgress todoProg) {
         adapter.addListElement(todoProg);
+        todoProg.save ();
     }
 }

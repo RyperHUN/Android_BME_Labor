@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.Model.Categories;
 import hu.bme.aut.a03_weatherinfo.R;
 
@@ -22,7 +23,7 @@ import hu.bme.aut.a03_weatherinfo.R;
 public class AddTodoDialogFragment extends AppCompatDialogFragment{
     public static final String TAG = "AddTodoDialogFragment";
     private AddTodoDialogListener listener;
-    private EditText editText;
+    private EditText descText;
     private Spinner categorySpinner;
 
     @Override
@@ -38,18 +39,40 @@ public class AddTodoDialogFragment extends AppCompatDialogFragment{
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getContext()).setTitle(R.string.new_city).setView(getContentView()).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+        return new AlertDialog.Builder(getContext()).setTitle(R.string.new_todo).
+                setView(getContentView()).setPositiveButton(R.string.ok,
+                new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                listener.onTodoAdded(editText.getText().toString());
-                //TODO
+                if (isValidInput ())
+                    listener.onTodoAdded(getParsedInputTODO ());
+                else
+                    ;//TODO Snackbar message
             }
         }).setNegativeButton(R.string.cancel, null).create();
     }
 
+    private TodoProgress getParsedInputTODO() {
+        String desc = descText.getText().toString();
+        int pos = categorySpinner.getSelectedItemPosition();
+        String category = Categories.getKey(Categories.getCategoriesStringArray()[pos]);
+
+        TodoProgress todoProgress = null;
+        try {
+            todoProgress = new TodoProgress (desc, category);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return todoProgress;
+    }
+
+    private boolean isValidInput() {
+        return descText.length() > 0;
+    }
+
     private View getContentView() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_todo, null);
-        editText = (EditText) view.findViewById(R.id.NewTodoDescText);
+        descText = (EditText) view.findViewById(R.id.NewTodoDescText);
         categorySpinner = (Spinner) view.findViewById(R.id.NewTodoSpinner);
         categorySpinner.setAdapter(new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_dropdown_item,
