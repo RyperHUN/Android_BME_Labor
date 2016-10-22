@@ -2,6 +2,10 @@ package hu.bme.aut.a03_weatherinfo.DB.Entities;
 
 import com.orm.SugarRecord;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import hu.bme.aut.a03_weatherinfo.Model.Categories;
 
 /**
@@ -24,4 +28,11 @@ public class TodoProgress extends SugarRecord{
     }
 
     public String getDesc () {return desc;}
+
+    public String getStartDate() {
+        Date date = new Date(start);
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        String dateFormatted = formatter.format(date);
+        return dateFormatted;
+    }
 }

@@ -52,6 +52,7 @@ implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
     public void onBindViewHolder(TodoViewHolder holder, int position) {
         holder.position = position;
         holder.nameTextView.setText(todos.get(position).progress.getDesc());
+        holder.dateTextView.setText(todos.get(position).progress.getStartDate());
     }
 
     @Override
@@ -105,12 +106,18 @@ implements DraggableItemAdapter<CityAdapter.TodoViewHolder> {
     public class TodoViewHolder extends AbstractDraggableItemViewHolder {
         int position;
         TextView nameTextView;
+        TextView dateTextView;
         Button completeButton;
+        Button removeButton;
 
         public TodoViewHolder(View itemView) {
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.TodoListItemDesc);
             completeButton = (Button) itemView.findViewById(R.id.TodoListItemCompleteBtn);
+            removeButton = (Button) itemView.findViewById(R.id.TodoListItemRemovBtn);
+            dateTextView = (TextView) itemView.findViewById(R.id.TodoListItemStartDate);
+
+            //TODO real clicks
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
