@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import hu.bme.aut.a03_weatherinfo.Model.Categories;
 import hu.bme.aut.a03_weatherinfo.R;
 
 /**
@@ -22,6 +23,7 @@ public class AddTodoDialogFragment extends AppCompatDialogFragment{
     public static final String TAG = "AddTodoDialogFragment";
     private AddTodoDialogListener listener;
     private EditText editText;
+    private Spinner categorySpinner;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,11 +50,10 @@ public class AddTodoDialogFragment extends AppCompatDialogFragment{
     private View getContentView() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_todo, null);
         editText = (EditText) view.findViewById(R.id.NewTodoDescText);
-        //TODO Spinner
-//        categorySpinner = (Spinner) contentView.findViewById(R.id.ShoppingItemCategorySpinner);
-//        categorySpinner.setAdapter(new ArrayAdapter<>(getContext(),
-//                android.R.layout.simple_spinner_dropdown_item,
-//                getResources().getStringArray(R.array.category_items)));
+        categorySpinner = (Spinner) view.findViewById(R.id.NewTodoSpinner);
+        categorySpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item,
+                Categories.getCategoriesStringArray()));
         return view;
     }
 }

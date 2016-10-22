@@ -1,5 +1,6 @@
 package hu.bme.aut.a03_weatherinfo.Model;
 
+import java.util.Dictionary;
 import java.util.HashMap;
 
 import hu.bme.aut.a03_weatherinfo.R;
@@ -47,6 +48,20 @@ public class Categories {
             initCategories();
 
         return categories.get(key);
+    }
+
+    static public String[] getCategoriesStringArray ()
+    {
+        if (categories.size () == 0)
+            initCategories();
+
+        String[] stringArray = new String[categories.size()];
+        stringArray[0] = categories.get(AKey);
+        stringArray[1] = categories.get(BKey);
+        stringArray[2] = categories.get(CKey);
+        stringArray[3] = categories.get(DKey);
+
+        return stringArray;
     }
 
 
