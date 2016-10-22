@@ -34,21 +34,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         checkPermissions ();
         initFab();
-        initRecyclerView();
 
-        DBTest ();
+        DBFillwithTestData ();
+
+        initRecyclerView();
     }
 
-    private void DBTest() {
+    private void DBFillwithTestData() {
         try {
             TodoProgress.deleteAll(TodoProgress.class);
-            TodoProgress todoProgress = new TodoProgress("Elmenni tejert", Categories.AKey);
-            todoProgress.save();
-            TodoProgress todoProgress2 = new TodoProgress("Elmenni Virsliert", Categories.BKey);
-            List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class);
+
+            InitProgressDatabase ();
+
         } catch (Exception e) {
             e.printStackTrace(); //TODO Better handling
         }
+    }
+
+    private void InitProgressDatabase() throws Exception {
+        TodoProgress todoProgress = new TodoProgress("Elmenni tejert", Categories.AKey);
+        todoProgress.save();
+        TodoProgress todoProgress2 = new TodoProgress("Elmenni Virsliert", Categories.BKey);
+        todoProgress2.save ();
+
+        List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class); //For debug
     }
 
     private void initFab() {
@@ -79,10 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        } );
 
-        adapter.addCity("Budapest");
-        adapter.addCity("Debrecen");
-        adapter.addCity("Sopron");
-        adapter.addCity("Szeged");
+        adapter.fillFromDb ();
         recyclerView.setAdapter(dragMgr.createWrappedAdapter(adapter));
 
         dragMgr.attachRecyclerView(recyclerView);

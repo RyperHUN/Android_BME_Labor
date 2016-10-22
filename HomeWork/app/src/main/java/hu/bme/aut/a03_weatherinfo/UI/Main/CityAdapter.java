@@ -14,6 +14,7 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemView
 import java.util.ArrayList;
 import java.util.List;
 
+import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.R;
 
 /**
@@ -94,6 +95,12 @@ implements DraggableItemAdapter<CityAdapter.CityViewHolder>{
     @Override
     public boolean onCheckCanDrop(int draggingPosition, int dropPosition) {
         return true;
+    }
+
+    public void fillFromDb() {
+        List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class);
+        for (TodoProgress todoProg : loaded)
+            addCity(todoProg.getDesc());
     }
 
     public class CityViewHolder extends AbstractDraggableItemViewHolder {

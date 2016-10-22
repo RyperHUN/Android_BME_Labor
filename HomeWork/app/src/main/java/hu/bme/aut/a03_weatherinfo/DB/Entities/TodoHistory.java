@@ -15,7 +15,7 @@ public class TodoHistory extends SugarRecord {
 
     public TodoHistory(TodoProgress progress) {
         this.desc     = progress.desc;
-        this.category = progress.categoryKey;
+        this.category = progress.category;
         this.start    = progress.start;
 
         this.end      = System.currentTimeMillis();
