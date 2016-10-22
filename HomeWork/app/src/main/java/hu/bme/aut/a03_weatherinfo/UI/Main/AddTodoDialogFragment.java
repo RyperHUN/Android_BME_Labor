@@ -9,7 +9,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import hu.bme.aut.a03_weatherinfo.R;
 
@@ -17,7 +19,7 @@ import hu.bme.aut.a03_weatherinfo.R;
  * Created by Ryper on 2016. 10. 22..
  */
 public class AddTodoDialogFragment extends AppCompatDialogFragment{
-    public static final String TAG = "AddCityDialogFragment";
+    public static final String TAG = "AddTodoDialogFragment";
     private AddTodoDialogListener listener;
     private EditText editText;
 
@@ -27,7 +29,7 @@ public class AddTodoDialogFragment extends AppCompatDialogFragment{
         if (getActivity() instanceof AddTodoDialogListener) {
             listener = (AddTodoDialogListener) getActivity();
         } else {
-            throw new RuntimeException("Activity must implement AddCityDialogListener interface!");
+            throw new RuntimeException("Activity must implement AddTodoDialogListener interface!");
         }
     }
 
@@ -45,7 +47,12 @@ public class AddTodoDialogFragment extends AppCompatDialogFragment{
 
     private View getContentView() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_todo, null);
-        editText = (EditText) view.findViewById(R.id.NewCityDialogEditText);
+        editText = (EditText) view.findViewById(R.id.NewTodoDescText);
+        //TODO Spinner
+//        categorySpinner = (Spinner) contentView.findViewById(R.id.ShoppingItemCategorySpinner);
+//        categorySpinner.setAdapter(new ArrayAdapter<>(getContext(),
+//                android.R.layout.simple_spinner_dropdown_item,
+//                getResources().getStringArray(R.array.category_items)));
         return view;
     }
 }

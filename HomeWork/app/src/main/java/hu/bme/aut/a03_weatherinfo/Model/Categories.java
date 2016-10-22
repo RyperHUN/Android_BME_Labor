@@ -2,6 +2,8 @@ package hu.bme.aut.a03_weatherinfo.Model;
 
 import java.util.HashMap;
 
+import hu.bme.aut.a03_weatherinfo.R;
+
 /**
  * Created by Ryper on 2016. 10. 22..
  */
@@ -13,10 +15,10 @@ public class Categories {
     static final public String CKey = "C";
     static final public String DKey = "D";
     //Values
-    static final private String AValue = "MustToday"; //TODO extract string resource
-    static final private String BValue = "MaybeToday";
-    static final private String CValue = "Later";
-    static final private String DValue = "DontForget";
+    static private String AValue = "MustToday"; //TODO extract string resource
+    static private String BValue = "MaybeToday";
+    static private String CValue = "Later";
+    static private String DValue = "DontForget";
     //Minimum 4 categories, can be expanded
 
     static private void initCategories ()

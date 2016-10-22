@@ -5,8 +5,36 @@
     android:orientation="vertical"
     android:padding="24dp">
 
-    <EditText
-        android:id="@+id/NewCityDialogEditText"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DialogTodoDescription"/>
+        <EditText
+            android:id="@+id/NewTodoDescText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dip"
+            android:text="@string/DialogTodoCategory"/>
+        <Spinner
+            android:id="@+id/NewTodoSpinner"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_margin="15dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 </LinearLayout>

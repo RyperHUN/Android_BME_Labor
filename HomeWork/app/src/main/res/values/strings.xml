@@ -14,5 +14,7 @@
     <string name="humidity">Humidity</string>
     <string name="main">Main</string>
     <string name="details">Details</string>
+    <string name="DialogTodoDescription">Description:</string>
+    <string name="DialogTodoCategory">Category:</string>
 </resources>
 
