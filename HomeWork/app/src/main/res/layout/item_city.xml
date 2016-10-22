@@ -20,5 +20,5 @@
         android:id="@+id/CityItemRemoveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/remove" />
+        android:text="@string/Complete" />
 </LinearLayout>
