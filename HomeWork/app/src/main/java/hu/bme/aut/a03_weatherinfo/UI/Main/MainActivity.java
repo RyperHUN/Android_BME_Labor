@@ -20,6 +20,7 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropM
 import java.util.List;
 
 import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
+import hu.bme.aut.a03_weatherinfo.Model.Categories;
 import hu.bme.aut.a03_weatherinfo.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,11 +40,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void DBTest() {
-        TodoProgress.deleteAll (TodoProgress.class);
-        TodoProgress todoProgress = new TodoProgress ("Elmenni tejert","Fontos");
-        todoProgress.save ();
-
-        List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class);
+        try {
+            TodoProgress.deleteAll(TodoProgress.class);
+            TodoProgress todoProgress = new TodoProgress("Elmenni tejert", Categories.AKey);
+            todoProgress.save();
+            TodoProgress todoProgress2 = new TodoProgress("Elmenni Virsliert", Categories.BKey);
+            List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class);
+        } catch (Exception e) {
+            e.printStackTrace(); //TODO Better handling
+        }
     }
 
     private void initFab() {

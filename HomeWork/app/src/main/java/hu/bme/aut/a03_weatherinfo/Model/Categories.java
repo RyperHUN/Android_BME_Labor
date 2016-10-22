@@ -1,7 +1,6 @@
 package hu.bme.aut.a03_weatherinfo.Model;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
 /**
  * Created by Ryper on 2016. 10. 22..
@@ -9,19 +8,23 @@ import java.util.LinkedList;
 public class Categories {
     static private HashMap<String, String> categories = new HashMap<>();
 
+    static final public String AKey = "A";
+    static final public String BKey = "B";
+    static final public String CKey = "C";
+    static final public String DKey = "D";
     //Values
-    static final public String A = "MustToday"; //TODO extract string resource
-    static final public String B = "MaybeToday";
-    static final public String C = "Later";
-    static final public String D = "DontForget";
+    static final private String AValue = "MustToday"; //TODO extract string resource
+    static final private String BValue = "MaybeToday";
+    static final private String CValue = "Later";
+    static final private String DValue = "DontForget";
     //Minimum 4 categories, can be expanded
 
     static private void initCategories ()
     {
-        categories.put ("A", A);
-        categories.put ("B", B);
-        categories.put ("C", C);
-        categories.put ("D", D);
+        categories.put (AKey , AValue);
+        categories.put (BKey , BValue);
+        categories.put (CKey , CValue);
+        categories.put (DKey , DValue);
     }
 
     // By key
@@ -40,7 +43,7 @@ public class Categories {
     {
         if (categories.size () == 0)
             initCategories();
-        
+
         return categories.get(key);
     }
 
