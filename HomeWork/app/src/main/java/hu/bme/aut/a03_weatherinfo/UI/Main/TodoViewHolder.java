@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemViewHolder;
 
-import hu.bme.aut.a03_weatherinfo.DB.Entities.TodoProgress;
 import hu.bme.aut.a03_weatherinfo.R;
 
 /**
@@ -19,9 +18,9 @@ public class TodoViewHolder extends AbstractDraggableItemViewHolder {
     Button completeButton;
     Button removeButton;
 
-    OnItemChangedNotifier myNotifier;
+    OnListItemChangedNotifier myNotifier;
 
-    public TodoViewHolder(View itemView, OnItemChangedNotifier notifier) {
+    public TodoViewHolder(View itemView, OnListItemChangedNotifier notifier) {
         super(itemView);
         myNotifier     = notifier;
         nameTextView   = (TextView) itemView.findViewById(R.id.TodoListItemDesc);

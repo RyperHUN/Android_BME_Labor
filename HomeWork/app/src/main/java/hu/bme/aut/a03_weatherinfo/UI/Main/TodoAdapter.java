@@ -4,12 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemAdapter;
 import com.h6ah4i.android.widget.advrecyclerview.draggable.ItemDraggableRange;
-import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +18,12 @@ import hu.bme.aut.a03_weatherinfo.R;
 /**
  * Created by Ryper on 2016. 10. 20..
  */
-public class CityAdapter extends RecyclerView.Adapter<TodoViewHolder>
-implements DraggableItemAdapter<TodoViewHolder>, OnItemChangedNotifier {
+public class TodoAdapter extends RecyclerView.Adapter<TodoViewHolder>
+implements DraggableItemAdapter<TodoViewHolder>, OnListItemChangedNotifier {
 
     private final List<ExtendedProgress> todos;
-//    private OnCitySelectedListener listener;
-//public CityAdapter(OnCitySelectedListener) {
 
-    public CityAdapter() {
-        //this.listener = listener;
+    public TodoAdapter() {
         todos = new ArrayList<>();
         setHasStableIds(true); // this is required for D&D feature.
     }
@@ -43,7 +37,7 @@ implements DraggableItemAdapter<TodoViewHolder>, OnItemChangedNotifier {
     //Fog egy sort es berakja a viewHolderbe es ezt adja vissza
     @Override
     public TodoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_city, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_todo, parent, false);
         TodoViewHolder viewHolder = new TodoViewHolder(view, this);
         return viewHolder;
     }

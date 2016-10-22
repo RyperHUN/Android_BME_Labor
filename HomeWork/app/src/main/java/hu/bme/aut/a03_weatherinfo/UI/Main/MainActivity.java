@@ -4,16 +4,12 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager;
 
@@ -26,7 +22,7 @@ import hu.bme.aut.a03_weatherinfo.R;
 public class MainActivity extends AppCompatActivity implements AddTodoDialogListener{
 
     private RecyclerView recyclerView;
-    private CityAdapter adapter;
+    private TodoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,14 +76,7 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CityAdapter ();
-// new OnCitySelectedListener() {
-//            @Override
-//            public void onCitySelected(String city) {
-//                // Todo: új DetailsActivity indítása és a
-//                // kiválasztott város hozzáadása
-//            }
-//        } );
+        adapter = new TodoAdapter();
 
         adapter.fillFromDb ();
         recyclerView.setAdapter(dragMgr.createWrappedAdapter(adapter));
@@ -144,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements AddTodoDialogList
                             grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                         // Megkaptuk az engedélyt, indítható a művelet
                     } else {
-                        //TODO                                      // Nem kaptuk meg az engedélyt,
+                        //                                      // Nem kaptuk meg az engedélyt,
                         // üzenet jelzése a felhasználónak
                     }
                     return;
