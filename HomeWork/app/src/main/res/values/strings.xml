@@ -16,5 +16,6 @@
     <string name="details">Details</string>
     <string name="DialogTodoDescription">Description:</string>
     <string name="DialogTodoCategory">Category:</string>
+    <string name="TodoListItemRemove">Remove</string>
 </resources>
 
