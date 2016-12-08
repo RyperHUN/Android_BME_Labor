@@ -23,16 +23,16 @@ import ryper.homeworkimprovement.History.HistoryActivity;
 import ryper.homeworkimprovement.R;
 
 public class PagerActivity extends AppCompatActivity implements AddTodoDialogListener {
+    CategoryPagerManager categoryPagerManager;
 
-    MainTodoAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DBFillwithTestData();
         setContentView(R.layout.activity_pager);
         ViewPager mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
-        CategoryPagerManager detailsPagerAdapter = new CategoryPagerManager(getSupportFragmentManager(), this);
-        mainViewPager.setAdapter(detailsPagerAdapter);
+        categoryPagerManager = new CategoryPagerManager(getSupportFragmentManager(), this);
+        mainViewPager.setAdapter(categoryPagerManager);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,7 +92,8 @@ public class PagerActivity extends AppCompatActivity implements AddTodoDialogLis
 
     @Override
     public void onTodoAdded(TodoProgress todoProg) {
-        adapter.add(todoProg);
+        todoProg.save();
+        categoryPagerManager.refresh();
     }
 
 }

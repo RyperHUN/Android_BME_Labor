@@ -61,6 +61,10 @@ implements OnListItemChangedNotifier {
         this.notifyDataSetChanged();
     }
 
+    public void clear () {
+        items.clear();
+    }
+
     public void add(TodoProgress item) {
         items.add(item);
         this.notifyDataSetChanged();

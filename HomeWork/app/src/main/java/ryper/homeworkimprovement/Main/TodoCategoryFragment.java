@@ -61,9 +61,8 @@ public class TodoCategoryFragment extends Fragment {
         refreshAdapterDataFromDB();
     }
 
-    private void refreshAdapterDataFromDB() {
-        ///TODO
-        //Adapter.clean
+    public void refreshAdapterDataFromDB() {
+        adapter.clear();
         List<TodoProgress> loaded = TodoProgress.find(TodoProgress.class, "category = ?", categoryKey);
         for (TodoProgress todo : loaded)
             adapter.add(todo);

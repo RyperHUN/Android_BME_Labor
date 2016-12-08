@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.util.ArrayList;
+
 import ryper.homeworkimprovement.DB.Categories;
 import ryper.homeworkimprovement.Dialog.AddTodoDialogListener;
 
@@ -13,9 +15,11 @@ import ryper.homeworkimprovement.Dialog.AddTodoDialogListener;
  */
 public class CategoryPagerManager extends FragmentPagerAdapter {
     private Context context;
+    ArrayList<TodoCategoryFragment> fragments = null;
 
     public CategoryPagerManager(FragmentManager fm, Context context) {
         super(fm);
+        fragments = new ArrayList<>();
         this.context = context;
     }
 
@@ -24,19 +28,27 @@ public class CategoryPagerManager extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment ret = null;
+        TodoCategoryFragment fragment = null;
         switch (position) {
             case 0:
-                ret = new TodoCategoryFragment().Init(context, Categories.AKey);
+                fragment = new TodoCategoryFragment().Init(context, Categories.AKey);
+                ret = fragment;
                 break;
             case 1:
-                ret = new TodoCategoryFragment().Init(context, Categories.BKey);
+                fragment = new TodoCategoryFragment().Init(context, Categories.BKey);
+                ret = fragment;
                 break;
             case 2:
-                ret = new TodoCategoryFragment().Init(context, Categories.CKey);
+                fragment = new TodoCategoryFragment().Init(context, Categories.CKey);
+                ret = fragment;
                 break;
             case 3:
-                ret = new TodoCategoryFragment().Init(context, Categories.DKey);
+                fragment = new TodoCategoryFragment().Init(context, Categories.DKey);
+                ret = fragment;
+                break;
         }
+        if (fragment != null)
+            fragments.add(fragment);
         return ret;
     }
 
@@ -65,6 +77,11 @@ public class CategoryPagerManager extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return 4;
+    }
+
+    public void refresh() {
+        for (TodoCategoryFragment fragment : fragments)
+            fragment.refreshAdapterDataFromDB();
     }
 }
 
