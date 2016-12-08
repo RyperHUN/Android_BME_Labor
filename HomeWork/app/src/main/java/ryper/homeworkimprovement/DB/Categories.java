@@ -30,10 +30,10 @@ public class Categories {
     static public void InitCategories (Context context)
     {
         Context = context;
-        AValue = context.getResources().getString(R.string.category_AKey);
-        BValue = context.getResources().getString(R.string.category_BKey);
-        CValue = context.getResources().getString(R.string.category_CKey);
-        DValue = context.getResources().getString(R.string.category_DKey);
+        AValue  = context.getResources().getString(R.string.category_AKey);
+        BValue  = context.getResources().getString(R.string.category_BKey);
+        CValue  = context.getResources().getString(R.string.category_CKey);
+        DValue  = context.getResources().getString(R.string.category_DKey);
 
         categoriesKeyValue.put (AKey , AValue);
         categoriesKeyValue.put (BKey , BValue);
