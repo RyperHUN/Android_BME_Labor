@@ -11,7 +11,12 @@
     <string name="title_activity_history">History</string>
     <string name="MenuViewHistory">Menu</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="category_AKey">Must do today!</string>
+    <string name="category_BKey">Maybe do today</string>
+    <string name="category_CKey">Do tomorrow</string>
+    <string name="category_DKey">Can be done later</string>
     <string name="title_activity_pager">Ryper Todo App</string>
+
+
 </resources>

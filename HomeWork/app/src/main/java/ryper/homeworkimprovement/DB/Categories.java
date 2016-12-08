@@ -1,6 +1,11 @@
 package ryper.homeworkimprovement.DB;
 
+import android.app.Activity;
+import android.content.Context;
+
 import java.util.HashMap;
+
+import ryper.homeworkimprovement.R;
 
 /**
  * Created by Ryper on 2016. 10. 22..
@@ -8,6 +13,7 @@ import java.util.HashMap;
 public class Categories {
     static private HashMap<String, String> categoriesKeyValue = new HashMap<>();
     static private HashMap<String, String> categoriesValueKey = new HashMap<>();
+    static private Context Context;
 
     static final public String AKey = "A";
     static final public String BKey = "B";
@@ -20,8 +26,15 @@ public class Categories {
     static private String DValue = "DontForget";
     //Minimum 4 categoriesKeyValue, can be expanded
 
-    static private void initCategories ()
+    //You have to call this method in the starting activity
+    static public void InitCategories (Context context)
     {
+        Context = context;
+        AValue = context.getResources().getString(R.string.category_AKey);
+        BValue = context.getResources().getString(R.string.category_BKey);
+        CValue = context.getResources().getString(R.string.category_CKey);
+        DValue = context.getResources().getString(R.string.category_DKey);
+
         categoriesKeyValue.put (AKey , AValue);
         categoriesKeyValue.put (BKey , BValue);
         categoriesKeyValue.put (CKey , CValue);
@@ -33,11 +46,15 @@ public class Categories {
         categoriesValueKey.put (DValue, DKey);
     }
 
+    private static void InitCheck() {
+        if (categoriesKeyValue.size () == 0 || Context == null)
+            throw new RuntimeException("Categories is not initialized, call Categories.Init with context");
+    }
+
     // By key
     static public boolean isValidCategory (String key)
     {
-        if (categoriesKeyValue.size () == 0)
-            initCategories();
+        InitCheck ();
 
         if (categoriesKeyValue.containsKey (key))
             return true;
@@ -45,26 +62,24 @@ public class Categories {
         return false;
     }
 
+
     static public String getCategory (String key)
     {
-        if (categoriesKeyValue.size () == 0)
-            initCategories();
+        InitCheck ();
 
         return categoriesKeyValue.get(key);
     }
 
     static public String getKey (String category)
     {
-        if (categoriesKeyValue.size () == 0)
-            initCategories();
+        InitCheck ();
 
         return categoriesValueKey.get(category);
     }
 
     static public String[] getCategoriesStringArray ()
     {
-        if (categoriesKeyValue.size () == 0)
-            initCategories();
+        InitCheck ();
 
         String[] stringArray = new String[categoriesKeyValue.size()];
         stringArray[0] = categoriesKeyValue.get(AKey);
