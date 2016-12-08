@@ -57,7 +57,8 @@ implements OnListItemChangedNotifier {
 
     @Override
     public void ItemRemoved(int position) {
-        items.remove(position);
+        TodoProgress removed = items.remove(position);
+        removed.delete();
         this.notifyDataSetChanged();
     }
 
