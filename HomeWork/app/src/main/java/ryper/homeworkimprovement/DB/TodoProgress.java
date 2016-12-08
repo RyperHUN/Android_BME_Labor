@@ -23,7 +23,7 @@ public class TodoProgress extends SugarRecord {
         if (Categories.isValidCategory(categoryKey))
             this.category = categoryKey;
         else
-            throw new Exception("Now valid category");
+            throw new Exception("No valid category");
         this.start    = System.currentTimeMillis();
     }
 

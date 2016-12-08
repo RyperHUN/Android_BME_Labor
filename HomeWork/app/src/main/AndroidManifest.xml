@@ -10,16 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main.MainTodoActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity
             android:name=".History.HistoryActivity"
             android:label="@string/title_activity_history"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Main.Pager.PagerActivity"
+            android:label="@string/title_activity_pager"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <meta-data
             android:name="DATABASE"
@@ -34,17 +40,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="ryper.homeworkimprovement" />
 
-        <activity
-            android:name=".Main.PagerActivity"
-            android:label="@string/title_activity_pager"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
     </application>
 
 </manifest>
