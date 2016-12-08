@@ -58,10 +58,14 @@ public class TodoCategoryFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
+        refreshAdapterDataFromDB();
+    }
 
+    private void refreshAdapterDataFromDB() {
+        ///TODO
+        //Adapter.clean
         List<TodoProgress> loaded = TodoProgress.find(TodoProgress.class, "category = ?", categoryKey);
         for (TodoProgress todo : loaded)
             adapter.add(todo);
-        ///Filter for categoryKey
     }
 }

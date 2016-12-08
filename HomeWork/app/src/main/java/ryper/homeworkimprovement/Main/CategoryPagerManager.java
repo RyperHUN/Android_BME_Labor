@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import ryper.homeworkimprovement.DB.Categories;
+import ryper.homeworkimprovement.Dialog.AddTodoDialogListener;
 
 /**
  * Created by Ryper on 2016. 12. 08..
