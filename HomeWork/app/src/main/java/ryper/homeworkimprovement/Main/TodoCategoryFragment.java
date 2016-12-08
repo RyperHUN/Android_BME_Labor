@@ -26,10 +26,11 @@ public class TodoCategoryFragment extends Fragment {
     public TodoCategoryFragment() {
         // Required empty public constructor
     }
-//    ///TODO CALL THIS!!
+//
 //    public TodoCategoryFragment (Context context, String categoryKey) {
 //
 //    }
+    ///TODO CALL THIS!!
     public TodoCategoryFragment Init (Context context, String categoryKey) {
         this.context = context;
         this.categoryKey = categoryKey;
@@ -57,8 +58,8 @@ public class TodoCategoryFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-//        DBFillwithTestData();
-        List<TodoProgress> loaded = TodoProgress.listAll(TodoProgress.class); //For debug
+
+        List<TodoProgress> loaded = TodoProgress.find(TodoProgress.class, "category = ?", categoryKey);
         for (TodoProgress todo : loaded)
             adapter.add(todo);
         ///Filter for categoryKey

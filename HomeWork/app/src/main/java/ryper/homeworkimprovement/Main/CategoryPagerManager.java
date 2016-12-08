@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import ryper.homeworkimprovement.DB.Categories;
+
 /**
  * Created by Ryper on 2016. 12. 08..
  */
@@ -23,11 +25,16 @@ public class CategoryPagerManager extends FragmentPagerAdapter {
         Fragment ret = null;
         switch (position) {
             case 0:
-                ret = new TodoCategoryFragment().Init(context, "A");
+                ret = new TodoCategoryFragment().Init(context, Categories.AKey);
                 break;
             case 1:
-                ret = new TodoCategoryFragment().Init(context, "B");
+                ret = new TodoCategoryFragment().Init(context, Categories.BKey);
                 break;
+            case 2:
+                ret = new TodoCategoryFragment().Init(context, Categories.CKey);
+                break;
+            case 3:
+                ret = new TodoCategoryFragment().Init(context, Categories.DKey);
         }
         return ret;
     }
@@ -37,11 +44,16 @@ public class CategoryPagerManager extends FragmentPagerAdapter {
         String title;
         switch (position) {
             case 0:
-                title = "kutya";
+                title = Categories.getCategory(Categories.AKey);
                 break;
             case 1:
-                title = "Masodik kutya";
-//                title = context.getString(R.string.details);
+                title = Categories.getCategory(Categories.BKey);
+                break;
+            case 2:
+                title = Categories.getCategory(Categories.CKey);
+                break;
+            case 3:
+                title = Categories.getCategory(Categories.DKey);
                 break;
             default:
                 title = "";
@@ -51,7 +63,7 @@ public class CategoryPagerManager extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 4;
     }
 }
 
