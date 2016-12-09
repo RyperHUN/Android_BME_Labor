@@ -4,6 +4,7 @@ Homework
 =================================
 > TODO list application. You can add and categorize TODOs. After you completed one, you can view it in the History tab.
 > Technologies:
+
  * SugarORM
  * Recycler View
  * Fragments
