@@ -1,5 +1,8 @@
 # Android example applications
 
+Homework
+=================================
+
 Examples
 =================================
 1. <b>Android Wallet</b> 
@@ -12,10 +15,18 @@ Examples
  * TextView, ImageView, EditText, Button
 
 2. <b>Shopping List</b> 
->
+> 
 > Technologies:
- * Fragment
  * Fragment
  * RecyclerView
  * FloatingActionButton
  * SugarORM
+ 
+3. <b>Wheather Info</b> 
+> 
+> Technologies:
+ * ViewPager
+ * Retrofit
+ * Glide
+ 
+ 
