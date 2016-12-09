@@ -38,7 +38,7 @@ implements OnListItemChangedNotifier {
     public void onBindViewHolder(ViewHolder holder, int position) {
         TodoProgress aktItem = items.get(position);
         holder.nameTextView.setText(aktItem.getDesc());
-        holder.dateTextView.setText(aktItem.getStartDate());
+        holder.dateTextView.setText(aktItem.getFormatedStartDate());
     }
 
     @Override

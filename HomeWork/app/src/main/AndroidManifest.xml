@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".Main.Pager.PagerActivity"
+            android:name=".Main.Pager.PagerMainActivity"
             android:label="@string/title_activity_pager"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

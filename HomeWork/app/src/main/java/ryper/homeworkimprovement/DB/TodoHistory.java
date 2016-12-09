@@ -29,8 +29,7 @@ public class TodoHistory extends SugarRecord {
 
     public String getDesc () {return desc;}
 
-    private String formattedDate (long dateLong)
-    {
+    private String formattedDate (long dateLong) {
         Date date = new Date(dateLong);
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         String dateFormatted = formatter.format(date);
@@ -38,11 +37,11 @@ public class TodoHistory extends SugarRecord {
         return dateFormatted;
     }
 
-    public String getStartDate() {
+    public String getFormatedStartDate() {
         return formattedDate (start);
     }
 
-    public String getEndDate () {
+    public String getFormatedEndDate() {
         return " - " + formattedDate (end);
     }
 

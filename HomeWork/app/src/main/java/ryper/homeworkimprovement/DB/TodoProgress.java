@@ -29,7 +29,7 @@ public class TodoProgress extends SugarRecord {
 
     public String getDesc () {return desc;}
 
-    public String getStartDate() {
+    public String getFormatedStartDate() {
         Date date = new Date(start);
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         String dateFormatted = formatter.format(date);

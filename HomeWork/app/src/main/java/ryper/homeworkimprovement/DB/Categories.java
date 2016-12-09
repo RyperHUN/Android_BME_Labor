@@ -20,15 +20,14 @@ public class Categories {
     static final public String CKey = "C";
     static final public String DKey = "D";
     //Values
-    static private String AValue = "MustToday"; //TODO extract string resource -> Don't work
-    static private String BValue = "MaybeToday";
-    static private String CValue = "Later";
-    static private String DValue = "DontForget";
+    static private String AValue = null; //They get values from string resource!
+    static private String BValue = null;
+    static private String CValue = null;
+    static private String DValue = null;
     //Minimum 4 categoriesKeyValue, can be expanded
 
     //You have to call this method in the starting activity
-    static public void InitCategories (Context context)
-    {
+    static public void InitCategories (Context context) {
         Context = context;
         AValue  = context.getResources().getString(R.string.category_AKey);
         BValue  = context.getResources().getString(R.string.category_BKey);
@@ -48,12 +47,11 @@ public class Categories {
 
     private static void InitCheck() {
         if (categoriesKeyValue.size () == 0 || Context == null)
-            throw new RuntimeException("Categories is not initialized, call Categories.Init with context");
+            throw new RuntimeException("Categories is not initialized, call Categories.InitCategories with context");
     }
 
     // By key
-    static public boolean isValidCategory (String key)
-    {
+    static public boolean isValidCategory (String key) {
         InitCheck ();
 
         if (categoriesKeyValue.containsKey (key))
@@ -63,22 +61,19 @@ public class Categories {
     }
 
 
-    static public String getCategory (String key)
-    {
+    static public String getCategory (String key) {
         InitCheck ();
 
         return categoriesKeyValue.get(key);
     }
 
-    static public String getKey (String category)
-    {
+    static public String getKey (String category) {
         InitCheck ();
 
         return categoriesValueKey.get(category);
     }
 
-    static public String[] getCategoriesStringArray ()
-    {
+    static public String[] getCategoriesStringArray () {
         InitCheck ();
 
         String[] stringArray = new String[categoriesKeyValue.size()];

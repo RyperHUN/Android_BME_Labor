@@ -12,11 +12,11 @@ import ryper.homeworkimprovement.DB.Categories;
 /**
  * Created by Ryper on 2016. 12. 08..
  */
-public class CategoryPagerManager extends FragmentPagerAdapter {
+public class CategoryPagerAdapter extends FragmentPagerAdapter {
     private Context context;
     ArrayList<TodoCategoryFragment> fragments = null;
 
-    public CategoryPagerManager(FragmentManager fm, Context context) {
+    public CategoryPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         fragments = new ArrayList<>();
         this.context = context;

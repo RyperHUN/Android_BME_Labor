@@ -34,8 +34,8 @@ public class TodoHistoryAdapter extends RecyclerView.Adapter<TodoHistoryViewHold
     @Override
     public void onBindViewHolder(TodoHistoryViewHolder holder, int position) {
         holder.position = position;
-        holder.dateEndTextView.setText (histories.get(position).getEndDate());
-        holder.dateStartTextView.setText(histories.get(position).getStartDate());
+        holder.dateEndTextView.setText (histories.get(position).getFormatedEndDate());
+        holder.dateStartTextView.setText(histories.get(position).getFormatedStartDate());
         holder.nameTextView.setText(histories.get(position).getDesc());
     }
 
